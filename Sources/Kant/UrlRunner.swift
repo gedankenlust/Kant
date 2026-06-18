@@ -39,7 +39,7 @@ enum UrlRunner {
     private static func runSafariAppleScript(url: URL, appName: String) -> Bool {
         let scriptSource = """
         tell application "\(appName)"
-            set targetURL to "\(url.absoluteString)"
+            set targetURL to "\(ShortcutRunner.escapeForAppleScript(url.absoluteString))"
             set found to false
             repeat with w in windows
                 try
@@ -68,7 +68,7 @@ enum UrlRunner {
     private static func runChromiumAppleScript(url: URL, appName: String) -> Bool {
         let scriptSource = """
         tell application "\(appName)"
-            set targetURL to "\(url.absoluteString)"
+            set targetURL to "\(ShortcutRunner.escapeForAppleScript(url.absoluteString))"
             set found to false
             repeat with w in windows
                 try
